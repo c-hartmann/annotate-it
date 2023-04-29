@@ -1,0 +1,38 @@
+[Desktop Entry]
+Type=Service
+Name=Annotate Image (ksnip)
+#MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/png; # orig ksnip
+MimeType=image/*;
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+Icon=ksnip
+Actions=AnnotateIt
+#TryExec=ksnip
+
+[Desktop Action AnnotateIt]
+Name=Annotate Image
+Name[de]=Bild annotieren
+Name[nl]=Afbeelding annoteren
+Name[fr]=Annoter l'image
+Name[it]=Annotare l'immagine
+Name[zh]=注释图像
+Name[da]=Anmærke billedet
+Name[et]=Annotate pilt
+Name[fi]=Merkitse kuva
+Name[jp]=画像に注釈をつける
+Name[ko]=이미지에 주석 달기
+Name[no]=Kommenter bilde
+Name[pl]=Dodaj adnotację do obrazu
+Name[pt]=Anotar imagem
+Name[sl]=Dodajanje opomb k sliki
+Name[sv]=Kommentera bilden
+Name[sk]=Anotácia obrázka
+Name[es]=Anotar imagen
+Name[cs]=Anotace obrázku
+Name[uk]=Анотувати зображення
+Name[id]=Membuat anotasi gambar
+Name[le]=Anotēt attēlu
+Name[lt]=Anotuoti vaizdą
+
+Icon=ksnip
+#Exec=bash -c 'LO="" ; FL="$(tesseract --list-langs | grep ${LANG:0:2})" ; [[ -n "$FL" ]] && LO="-l $FL" ; IN="%u" ; OB="${IN%.*}" ; tesseract "${IN}" "${OB}" ${LO}'
+Exec=bash -c 'KSNIP="$(type -p ksnip)" ; if [[ 0 -ne $? ]] ; then kdialog --error "ksnip not installed. try: $ sudo pkcon install ksnip" ; else IMAGE="%u" ; $KSNIP --edit "${IMAGE}" ; fi'
