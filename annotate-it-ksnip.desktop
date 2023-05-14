@@ -34,5 +34,4 @@ Name[le]=Anotēt attēlu
 Name[lt]=Anotuoti vaizdą
 
 Icon=ksnip
-#Exec=bash -c 'LO="" ; FL="$(tesseract --list-langs | grep ${LANG:0:2})" ; [[ -n "$FL" ]] && LO="-l $FL" ; IN="%u" ; OB="${IN%.*}" ; tesseract "${IN}" "${OB}" ${LO}'
 Exec=bash -c 'KSNIP="$(type -p ksnip)" ; if [[ 0 -ne $? ]] ; then kdialog --error "ksnip not installed. try: $ sudo pkcon install ksnip" ; else IMAGE="%u" ; $KSNIP --edit "${IMAGE}" ; fi'
